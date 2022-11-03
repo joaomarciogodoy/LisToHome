@@ -1,0 +1,132 @@
+.containerlogin{
+  width: 600px;
+  height: 450px;
+  margin: 20px auto;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(253,127,12,1) 0%, rgba(34,34,34,.5) 100%);
+  border-radius: 50px;
+  box-shadow: -14px 17px 20px -1px rgba(0,0,0,0.78);
+  
+}
+
+#img-form{
+  width: 120px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.form-input{
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+h2{
+  text-align: center;
+  font-size: 40px;
+}
+
+.btn-cadastro{
+  width: 180px;
+  height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  background-color:rgba(253,127,12,1);
+  color: rgba(255, 255, 255, .9);
+  margin-left: 160px;
+  cursor: pointer;
+}
+
+.btn-cadastro:hover{
+  transform: scale(1.1);
+  transition: all .5s;
+  cursor: pointer;
+}
+
+
+
+
+
+label{
+  font-size: 20px;
+}
+
+input{
+  width: 90%;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px;
+  margin: 12px;
+  color: #fff;
+}
+input::placeholder {
+  font-size: 16px;
+  color: rgb(255, 255, 255, .8);
+  padding: 0 5px;}
+
+  #link-registrar{
+    text-align: center;
+  }
+
+  #link-registrar a:hover{
+    background: #fff;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+
+  }
+
+  @media screen and (max-width: 800px) {
+    .containerlogin{
+    width: 400px;
+    height: 55vh;
+    margin: 20px auto;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(34,34,34,.5) 0%, rgba(253,127,12,1) 100%);
+    border-radius: 50px;
+    box-shadow: -14px 17px 20px -1px rgba(0,0,0,0.78);
+    
+  }
+  #img-form{
+    width: 40px;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+  .form-input{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  h2{
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .btn-cadastro{
+    width: 180px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    background-color:rgba(253,127,12,1);
+    color: rgba(255, 255, 255, .9);
+    margin-left: 60px;
+    cursor: pointer;
+  }
+  
+  
+  .btn-cadastro:hover{
+    transform: scale(1.1);
+    transition: all .5s;
+    cursor: pointer;
+  }
+  } 

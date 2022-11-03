@@ -1,0 +1,121 @@
+<style>
+    input[type="text"].nome-produto {
+        font-size: 25px;
+        font-weight: bold;
+        background: transparent;
+        border: none;
+        color: white;
+    }
+</style>
+
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+
+
+
+
+<label>
+    <h4>Filtro</h4>
+</label>
+<img src="/images/filter.png" id="img-filter" alt="">
+
+<form action="/admin/filter" method="get">
+    <select class="form-select " name="categoriafilter">
+        <option value="0">Todos</option>
+        {{#each categorias}}
+        <option value="{{_id}}">{{nome}}</option>
+        {{else}}
+
+        {{/each}}
+
+    </select>
+
+    <button class="btn btn-success mt-4">Pesquisar</button>
+
+
+</form>
+<br>
+<hr>
+<a href="#modalCategoria" data-bs-toggle="modal" data-bs-target="#modalCategoria" class="btn btn-success">Adicionar Produto</a>
+<br><br>
+
+<div class="container-grid">
+    {{#each produtos}}
+
+    <form action="/admin/listaprodutos/nova" method="post">
+
+        <div class="card" id="card-produto" style="width: 18rem;">
+            {{!-- <img src='../../images/{{img}}' class="card-img-top" alt="..."> --}}
+            <div class="card-body">
+                <input type="text" hidden name="id" value="{{_id}}">
+                <input type="text" name="nome" class="nome-produto" value="{{nome}}">
+                <input type="text" hidden name="lista" class="nome-lista" value="{{../nomelista}}">
+                <input type="text" hidden name="preco" value="{{preco}}">
+                <input type="text" hidden name="categoria" value="{{categoria.nome}}">
+                <br>
+                <br>
+                <button type="submit" class="btn btn-success">Adicionar</button>
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+        {{!-- {{else}}
+        <h1>Nenhum Produto Cadastrado</h1> --}}
+    </form>
+    {{/each}}
+
+
+
+
+
+</div>
+<br>
+<a href="/lista/{{nomelista}}" class="btn btn-primary">Ir para a lista {{nomelista}}</a>
+
+
+<div class="modal " id="modalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title-view" >Cadastrar Produto</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      <form action="/admin/produtos/nova" id="formModal" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o Nome do Produto" class="form-control">
+            <br>
+
+            <label for="preco">Preço:</label>
+            <input type="number" min="0.5" step="any" id="preco" name="preco" placeholder="Digite o Preço do Produto"
+                class="form-control">
+            <br>
+
+            <label for="categoria">Categoria:</label>
+            <select class="form-select form-select-sm" name="categoria" id="categoria">
+                <option value="0" selected class="testeoption">Selecione uma categoria</option>
+                {{#each categorias}}
+                <option value="{{_id}}" class="testeoption">{{nome}}</option>
+                {{/each}}
+            </select>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" form="formModal" class="btn btn-success">Adicionar Produto</button>
+      </div>
+    </div>
+  </div>
+</div>

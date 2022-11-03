@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title id="title-landing">LisToHome</title>
+
+
+</head>
+
+<body>
+ {{#if user}}
+TUTORIAL
+
+<a href="/usuarios/tutorial">Tutorial</a>
+ 
+
+   {{else}}
+   
+   {{_changednavbar}}
+             <main id="main-landing">
+        <aside id="aside-landing">
+            <span id="span-landing">
+                <h2 id="h2-landing">Inscreva-se agora</h2>
+            </span>
+            <h3 id="h3-landing">E tenha sua lista de compras na palma da mão.</h3>
+
+            <p id="p-landing">
+                O site LisToHome tem como objetivo auxiliar o cliente na execução de uma lista de compras para melhor
+                organização, controle de tempo, financeiro e esquematização da lista. Pode ser dividido em categorias,
+                adicionar e retirar itens da lista de compra e suas respectivas quantidades.
+                Liberado para todas as faixas etárias.
+            </p>
+
+            <a href="/usuarios/registro" id="cadastro-btn">Cadastrar</a>
+
+           
+          
+
+
+        </aside>
+
+        <article id="article-landing">
+            <img src="./components/img/logo.png" id="img-landing" alt="logo">
+        </article>
+      
+    </main>
+            {{/if}}
+   
+       
+      
+  
+
+</body>
+
+</html>

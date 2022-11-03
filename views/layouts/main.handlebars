@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/rounded.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/personalizado.css">
+    {{!--
+    <link rel="stylesheet" href="/landingcss/about.css"> --}}
+
+    <title>LisToHome</title>
+</head>
+
+<body>
+ 
+ {{#if user}}
+
+      {{> _navbar }}
+      {{else}}
+      {{> _changednavbar }}
+      {{/if}}
+  
+    <div class="container mt-4">
+        {{#if error}}
+        <div class="alert alert-danger">
+            {{error}}
+        </div>
+        {{else}}
+        {{/if}}
+
+        {{> _msg }}
+        {{{body}}}
+    </div>
+
+     <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script id="free_accessibility_plugin_script" src="https://accessibility.f-static.com/site/free-accessibility-plugin/accessibility.min.js?lan=en&place=top-right&distance=10" crossorigin="anonymous"></script>
+
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+
+   
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/48f8125ff4.js" crossorigin="anonymous"></script>
+
+<script src="/js/bootstrap.js"></script>
+
+</html>

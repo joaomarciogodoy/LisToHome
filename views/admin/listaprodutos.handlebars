@@ -1,0 +1,21 @@
+<h2>Listas</h2>
+<hr>
+
+
+
+
+{{#each lista}}
+<div class="card mb-4 mt-4">
+    <div class="card-body">
+        <h3>{{nome}}</h3>
+        <br>
+        <a href="/admin/listaprodutos/add/{{_id}}">Adicionar</a>
+
+    </div>
+</div>
+
+{{else}}
+<h4 class="mt-4">Nenhum produto cadastrado</h4>
+
+
+{{/each}}

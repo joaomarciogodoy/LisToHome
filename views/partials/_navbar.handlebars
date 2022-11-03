@@ -1,0 +1,65 @@
+
+
+<header>
+    <div id="title">
+        <a href="/"><h1>LisToHome</h1></a>
+    </div>
+
+    <ul id="navbar-fixed">
+        {{#if user}}
+
+          
+              {{#each user}}
+         
+        <img src="../../user_img/{{img}}"alt="" id="user_img" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Clique aqui para sair">
+
+
+        {{/each}}
+         
+         </div>
+     
+        <li><a href="/homelist">Listas</a></li>
+        <li><a href="/admin/categorias">Categorias</a></li>
+        <li><a href="/admin/produtos">Produtos</a></li>
+        <li><a href="/sobre">Sobre</a></li>
+
+        
+
+    
+ 
+
+        
+</ul>
+
+        {{else}}
+      <ul id="navbar-fixed">
+          <li id="li-sobre"><a href="/sobre">Sobre</a></li>
+        <li id="li-login"><a href="/usuarios/login" id="inscrevase-btn">Login</a></li>
+      </ul>
+        {{/if}}
+
+    
+
+    
+    
+</header>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title-view" id="add-h3">LOGOUT</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <p id="add-h3">TEM CERTEZA QUE DESEJA SAIR ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <a  href="/usuarios/logout" class="btn btn-danger">SAIR</a>
+      </div>
+    </div>
+  </div>
+</div>
+

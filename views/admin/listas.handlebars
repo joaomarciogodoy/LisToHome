@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Listas Cadastradas:</h2>
+
+<a href="/admin/listas/add" class="btn btn-success mt-2">Adicionar Lista</a>
+<br>
+
+
+
+</div>
+<hr>
+<div class="container-grid">
+    {{#each listas}}
+
+    <div class="card card-view-lista" id="card-produto">
+        <div class="card-body">
+            <h3 class="nome-lista">{{nome}}</h3>
+            <p class="data-lista">Data de Criação: {{date}}</p>
+            <br>
+
+            <div class="container-lista"> <a href="/admin/listas/edit/{{_id}}"><button
+                        class="btn btn-warning mt-2 btn-grid">Editar</button></a>
+                <button form="form-delete" type="submit" class="btn btn-danger mt-2 btn-grid">Deletar</button>
+            </div>
+
+            <form id="form-delete" action="/admin/listas/delete" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+            </form>
+
+        </div>
+    </div>
+
+
+    {{else}}
+   <h4>Nenhuma Lista Cadastrada</h4>
+
+
+    {{/each}}
+</div>

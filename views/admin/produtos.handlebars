@@ -1,0 +1,36 @@
+<div class="container">
+<h2>Produtos Cadastrados:</h2>
+
+<a href="/admin/produtos/add" class="btn btn-success mt-2">Adicionar Produto</a>
+<br>
+
+
+    <hr>
+
+
+    <div class="container-grid">
+        {{#each produtos}}
+        <div class="card card-view-lista" id="card-produto">
+            <div class="card-body">
+                <h5 class="card-text">{{nome}}</h5>
+                <p class="card-text"> <b>Preço:</b> R${{preco}},00</p>
+                <p class="card-text"><b>Categoria:</b> {{categoria.nome}}</p>
+                <a href="/admin/produtos/edit/{{_id}}" class="btn btn-warning">Editar</a>
+                <a href="/admin/produtos/delete/{{_id}}" class="btn btn-danger">Deletar</a>
+            </div>
+
+
+        </div>
+       
+
+        {{else}}
+
+
+   
+    <h4>Nenhum produto cadastrado</h4>
+    {{/each}}
+
+  </div>
+
+</div>
+</div>

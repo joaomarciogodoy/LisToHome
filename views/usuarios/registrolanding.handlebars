@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../landingcss/about.css">
+  <link rel="stylesheet" href="../../landingcss/media.css">
+  <link rel="stylesheet" href="../../landingcss/cadastro.css">
+
+  <title>LisToHome</title>
+</head>
+
+<body>
+
+
+
+  <main>
+
+
+
+    <form action="/usuarios/registro" method="post" enctype="multipart/form-data">
+      <h2>Cadastre-se!</h2>
+      <div class="containercadastro">
+        <img id="img-form" src="../../components/img/logo.png">
+        <div class="form-input">
+          <label for="nome">Nome:</label>
+          <br>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu Nome">
+          <br>
+          <label for="email">E-mail:</label>
+          <br>
+          <input type="email" id="email" name="email" placeholder="Digite seu Email">
+          <br>
+          <label for="password">Senha:</label>
+          <br>
+          <input type="password" id="password" name="senha" placeholder="Digite sua Senha">
+          <br>
+          <label for="confirm-senha">Confirmação de Senha:</label>
+          <br>
+          <input type="password" id="confirm-senha" name="senha2" placeholder="Confirme sua Senha" >
+          <br>
+           <label for="user_img">Escolha sua foto de perfil:</label>
+          <br>
+          <input type="file" name="user_img" class=" form-control-sm">
+          <br>
+         
+        
+          <button class="btn-cadastro">Cadastrar</button>
+          <p id="link-registrar">Já tem uma conta? <a href="/usuarios/login">Clique aqui para entrar!</a></p>
+        </div>
+
+      </div>
+
+    </form>
+
+  </main>
+
+
+
+
+  <script src="../../js/responsive.js"></script>
+
+</body>
+
+</html>

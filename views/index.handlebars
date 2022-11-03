@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Listas Recentes:</h2>
+<br>
+<a href="/admin/listas/add" class="btn btn-success mt-2">Adicionar Lista</a>
+<a href="/admin/listas" class="btn btn-warning mt-2">Gerenciar Listas</a>
+<br>
+
+
+<hr>
+<div class="container-grid">
+    {{#each listas}}
+
+    <div class="card " style="width: 17rem;" id="card-produto">
+        <div class="card-body">
+            <h5 class="card-title">{{nome}}</h5>
+
+            <a href="/lista/{{nome}}" class="btn btn-success">Ver Mais</a>
+            <a href="/admin/listaprodutos/add/{{nome}}" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+            <a href="/usuarios/compartilhar/{{nome}}" class="btn btn-success"><i class="fa-solid fa-share"></i></a>
+
+        </div>
+    </div>
+    {{else}}
+
+    <h4>Nenhuma Lista Cadastrada</h4>
+
+    {{/each}}
+</div>
+</div>

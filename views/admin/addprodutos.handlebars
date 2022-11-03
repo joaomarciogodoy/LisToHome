@@ -1,0 +1,58 @@
+<h3>Novo Produto</h3>
+{{#if categorias}}
+<div class="card" id="card-produto">
+    <div class="card-body">
+        <form action="/admin/produtos/nova" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o Nome do Produto" class="form-control">
+            <br>
+
+            <label for="preco">Preço:</label>
+            <input type="number" min="0.5" step="any" id="preco" name="preco" placeholder="Digite o Preço do Produto"
+                class="form-control">
+            <br>
+
+            <label for="categoria">Categoria:   (Se não achar a categoria desejada, <a href="#modalCategoria" data-bs-toggle="modal" data-bs-target="#modalCategoria">clique aqui</a> )</label>
+            <select class="form-select form-select-sm" name="categoria" id="categoria">
+                <option value="0" selected class="testeoption">Selecione uma categoria</option>
+                {{#each categorias}}
+                <option value="{{_id}}" class="testeoption">{{nome}}</option>
+                {{/each}}
+            </select>
+
+            <button type="submit" class="btn btn-success mt-4">Criar Produto </button>
+        </form>
+    </div>
+
+</div>
+
+{{else}}
+<div class="alert alert-warning">
+    <h3>Antes de adicionar o primeiro produto, cadastre pelo menos uma categoria.</h3>
+    <a href="/admin/categorias/add" class="btn btn-success">Adicionar Categoria</a>
+</div>
+
+{{/if}}
+
+
+
+<div class="modal " id="modalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="card-title-view" >Cadastrar Categoria</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="/admin/categoria/nova/modal" method="post" id="formModal">
+        <label id="modal-categoria" for="">Categoria:</label><br>
+        <input type="text" name="categoria" class="form-control" placeholder="Nome da Categoria" >
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" form="formModal" class="btn btn-success">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>

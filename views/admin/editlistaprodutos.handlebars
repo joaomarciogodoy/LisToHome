@@ -1,0 +1,49 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<h3  class="text-center">Editar Produto da lista {{listaproduto.lista}}</h3>
+<div class="card w-50 mx-auto" id="card-produto">
+    <div class="card-body">
+        <form action="/admin/listaprodutos/edit" method="post">
+            <input type="hidden" name="id" value="{{listaproduto._id}}">
+            <label for="nome">Nome:</label>
+            <input type="test"  id="nome_produto" name="nome_produto"
+                value="{{listaproduto.nome}}" class="form-control">
+            <br>
+
+            <label for="preco">Preço:</label>
+            <input type="number" min="0.5" step="any" id="preco" name="preco" placeholder="Preço do Produto"
+                value="{{listaproduto.preco}}" class="form-control">
+            
+
+     
+
+<input type="text" hidden value="{{listaproduto.categoria}}" name="categoria">
+<input type="text" hidden value="{{listaproduto.lista}}" name="lista">
+
+
+            {{!-- <select class="form-select form-select-sm" name="categoria" id="categoria">
+                 <option value="{{_id}}" name="categoria">{{listaproduto.categoria}}</option>
+               {{#each categoria}}
+                <option value="{{nome}}">{{nome}}</option>
+                {{/each}}
+            </select> --}}
+            {{!-- <br>
+            <label for="preco">Lista:</label>
+            <select class="form-select form-select-sm" name="lista" id="lista">
+                {{#each lista}}
+                <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                <option value="0">Nenhuma Lista Cadastrada</option>
+                {{/each}}
+            </select>
+            <br> --}}
+
+            <button type="submit" class="btn btn-success mt-4">Editar Produto </button>
+        </form>
+    </div>
+
+</div>
