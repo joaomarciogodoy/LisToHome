@@ -58,10 +58,10 @@ app.set('view engine', 'handlebars');
 
 //Mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1/LisToHome').then(() => {
+mongoose.connect('mongodb+srv://joaomarcio:*Aa40028922@cluster0.mu0yood.mongodb.net/test').then(() => {
     console.log('Conectado ao MongoDB');
 }
-//mongodb+srv://joaomarciogodoy:*Aa40028922@cluster0.3mzasqq.mongodb.net/LisToHome
+//mongodb://127.0.0.1/LisToHome
 ).catch((err) => {
     console.log('Erro ao conectar ao MongoDB: ' + err);
 }
