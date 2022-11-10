@@ -11,7 +11,7 @@
     <h5>Procure o usuário que deseja.</h5>
 </label>
 
-<form action="/usuarios/pesquisar" method="post">
+<form action="/usuarios/pesquisar/{{nome_lista}}" method="get">
       <input type="text" name="pesquisa" class="nome-produto">
 
     <button class="btn btn-success">Pesquisar</button>
@@ -30,7 +30,7 @@
 
             <h5 class="card-title">{{nome}}</h5>
             <input class="card-title" hidden name="verificadorId" value="{{_id}}" type="text">
-            <input class="card-title" hidden name="nome_lista" value="{{../nome_lista}}" type="text">
+            <input class="card-title"  name="nome_lista" value="{{../nome_lista}}" type="text">
            <button type="submit" class="btn btn-success btn-share"><i class="fa-solid fa-share"></i></button>
 
 

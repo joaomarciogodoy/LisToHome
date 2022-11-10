@@ -331,30 +331,6 @@ router.get('/listaprodutos', (req, res) => {
 
 router.get('/listaprodutos/add/:nomelista', (req, res) => {
 
-//     Produto.find({}).populate("categoria").lean().then((produtos) => {
-//         Lista.findOne({ _id: req.params.listid }).lean().then((lista) => {
-
-//             Categoria.find({}).lean().then((categorias) => {
-//                 res.render('admin/addlistaprodutos', { produtos: produtos, lista: lista, categorias: categorias, listid: req.params.listid });
-//             }
-//             ).catch((err) => {
-//                 req.flash('error_msg', 'Houve um erro ao carregar as categorias');
-//                 res.redirect('/admin/listaprodutos');
-//             }
-//             );
-//         }
-//         ).catch((err) => {
-//             req.flash('error_msg', 'Houve um erro ao carregar a lista');
-//             res.redirect('/admin/listaprodutos');
-//         }
-//         );
-//     }
-//     ).catch((err) => {
-//         req.flash('error_msg', 'Houve um erro ao carregar os produtos');
-//         res.redirect('/admin/listaprodutos');
-//     }
-//     );
-
     Produto.find({id_user: req.user._id}).lean().populate("categoria").then((produtos) => {
 
        Categoria.find({id_user: req.user._id}).lean().then((categorias)=>{
@@ -369,6 +345,49 @@ router.get('/listaprodutos/add/:nomelista', (req, res) => {
     );
 }
 );
+
+   //filtrar produtos por categoria
+   router.get('/filter/:nomelista', (req, res) => {
+           
+    let nomelista = req.params.nomelista
+           
+    Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
+        const categoria = req.query.categoriafilter;
+       if(categoria == 0){
+       
+        Produto.find({id_user: req.user._id}).lean().then((produtos) => {
+            res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias,nomelista:nomelista});
+        }
+        ).catch((err) => {
+            req.flash('error_msg', 'Houve um erro ao listar os produtos');
+            console.log(err);
+        }
+        );
+
+       } else {
+
+        Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
+            res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos,nomelista:nomelista});
+        }
+        ).catch((err) => {
+            req.flash('error_msg', 'Houve um erro ao listar os produtos.');
+            console.log(err);
+        }
+        );
+       }
+
+    }
+    ).catch((err) => {
+        req.flash('error_msg', 'Houve um erro ao listar as categorias');
+        console.log(err);
+    }
+    );
+}
+);
+
+
+
+
 
 
 
@@ -612,48 +631,7 @@ router.get('/categoria/edit/:id', (req, res) => {
         }
         );
 
-        //filtrar produtos por categoria
-        router.post('/filter', (req, res) => {
-           
-           
-           
-            Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
-                const categoria = req.body.categoriafilter;
-               if(categoria == 0){
-               
-                Produto.find({id_user: req.user._id}).lean().then((produtos) => {
-                    res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias});
-                }
-                ).catch((err) => {
-                    req.flash('error_msg', 'Houve um erro ao listar os produtos');
-                    console.log(err);
-                }
-                );
-
-               } else {
-
-                Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
-                    res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos});
-                }
-                ).catch((err) => {
-                    req.flash('error_msg', 'Houve um erro ao listar os produtos.');
-                    console.log(err);
-                }
-                );
-               }
-
-            }
-            ).catch((err) => {
-                req.flash('error_msg', 'Houve um erro ao listar as categorias');
-                console.log(err);
-            }
-            );
-        }
-        );
- 
-
-
-
+     
 
 
 
