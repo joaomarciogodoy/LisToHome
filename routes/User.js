@@ -145,7 +145,7 @@ router.get('/compartilhar/:nome_lista', (req, res) => {
 );
 
 router.post('/pesquisar', (req, res) => {
-    Usuario.find({ nome:  { $regex: '.*' + req.body.pesquisa + '.*' }, _id: {$ne: req.user._id} }).lean().then((usuarios) => {
+    Usuario.find({ nome:  { $regex: '.*' + req.body.pesquisa + '.*' }, _id: {$ne: req.user._id} }).limit(1).lean().then((usuarios) => {
         const nomeDaLista = req.body.nome_lista;
         res.render('usuarios/compartilhar', {usuarios:usuarios, nome_lista:nomeDaLista});
     })

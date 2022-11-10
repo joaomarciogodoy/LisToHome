@@ -1,14 +1,31 @@
 
 <body>
 
+    <h2>Compartilhar:</h2>
+    <hr>
+    <br>
 
-<h2>Aqui estão todos os usuários, agora é só compartilhar :)</h2>
+
+
+    <label>
+    <h5>Procure o usuário que deseja.</h5>
+</label>
+
+<form action="/admin/filter" method="get">
+      <input type="text" name="nome" class="nome-produto">
+
+    <button class="btn btn-success">Pesquisar</button>
+
+
+</form>
+
+  
 <br>
 
 <div class="container-grid">
              {{#each usuarios}}
           <form action="/usuarios/compartilhar/salvar" method="post">
-                   <div class="card" style="width: 15rem; height: 4rem" id="card-produto">
+                   <div class="card" style="width: 15rem; height: 5rem" id="card-produto">
         <div class="card-body">
 
             <h5 class="card-title">{{nome}}</h5>
@@ -17,7 +34,7 @@
            <button type="submit" class="btn btn-success btn-share"><i class="fa-solid fa-share"></i></button>
 
 
-
+{{!-- TESTAR COM INPUT --}}
         </div>
     </div>
 

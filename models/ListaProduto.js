@@ -16,7 +16,7 @@ const ListaProduto = new Schema({
         required: true
     },
     preco: {
-        type: Number,
+        type: String,
         required: true
     },
     categoria: {
@@ -32,6 +32,10 @@ const ListaProduto = new Schema({
         required: true,
         default: "teste",
       },
+      validade:{
+        type: String,
+        required: false,
+      }
 }
 );
 

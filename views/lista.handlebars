@@ -16,6 +16,7 @@
             <th scope="col">Nome</th>
             <th scope="col">Preço</th>
             <th scope="col">Categoria</th>   
+            <th scope="col">Validade</th>   
             <th scope="col">Ação</th>   
             {{!-- <th scope="col">id</th> --}}
         </tr>
@@ -25,8 +26,9 @@
          {{#each listas}}
         <tr>
             <td>{{nome}}</td>
-            <td>R${{preco}},00</td>
+            <td class="preco"  value=" {{preco}}">{{preco}}</td>
             <td>{{categoria}}</td>
+            <td>{{validade}}</td>
            <td><input type="text" hidden="true" name="listaprodutoid" value="{{_id}}">
            <a href="/admin/listaprodutos/edit/{{_id}}" class="btn btn-warning">Editar</a>
            
@@ -65,5 +67,29 @@
        
         
     }
+
+
+var precoteste = document.getElementsByClassName("preco")
+
+
+
+
+
+for (let item of precoteste) {
+   var preconumero =  Number(item.textContent.replace(/[^0-9.-]+/g,""))
+
+
+console.log(preconumero[0])
+
+}
+
+
+
+
+
+
+
+
+
 
 </script>

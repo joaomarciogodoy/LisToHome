@@ -13,8 +13,9 @@
         <div class="card card-view-lista" id="card-produto">
             <div class="card-body">
                 <h5 class="card-text">{{nome}}</h5>
-                <p class="card-text"> <b>Preço:</b> R${{preco}},00</p>
+                <p class="card-text"> <b>Preço:</b> {{preco}}</p>
                 <p class="card-text"><b>Categoria:</b> {{categoria.nome}}</p>
+                  <p class="card-text"><b>Validade:</b> {{validade}}</p>
                 <a href="/admin/produtos/edit/{{_id}}" class="btn btn-warning">Editar</a>
                 <a href="/admin/produtos/delete/{{_id}}" class="btn btn-danger">Deletar</a>
             </div>

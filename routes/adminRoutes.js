@@ -195,18 +195,40 @@ router.post('/produtos/nova', (req, res) => {
 //         break;
 // }
 
+var formatterCurrency = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  });
+  
+var precoFormatado = formatterCurrency.format(req.body.preco)
+
+
+var formatter = new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'long',
+});
+if(req.body.validade != ""){
+   var validade = new Date(req.body.validade)
+    var validadeProduto = formatter.format(validade)
+}
+
+let produtoNome = req.body.nome
 
         const novoProduto = {
-            nome: req.body.nome,
-            preco: req.body.preco,
+            nome: produtoNome,
+            preco: precoFormatado,
             categoria: req.body.categoria,
-            id_user:req.user._id
+            id_user:req.user._id,
+            validade: validadeProduto
             // img: img
         }
         new Produto(novoProduto).save()
 
             .then(() => {
-                req.flash('success_msg', 'Produto criado com sucesso.');
+                req.flash('success_msg', `Produto "${produtoNome}" criado com sucesso.`);
                 res.redirect('back');
             }
             ).catch((erro) => {
@@ -389,7 +411,8 @@ router.post('/listaprodutos/nova', (req, res) => {
             preco: req.body.preco,
             categoria: req.body.categoria,
             lista: nomeLista,
-            id_user: req.user._id
+            id_user: req.user._id,
+            validade: req.body.validade
         }
         new ListaProduto(novoListaProduto).save()
 

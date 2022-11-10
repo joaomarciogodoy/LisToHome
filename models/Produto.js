@@ -12,7 +12,7 @@ const Produto = new Schema({
         required: true
     },
     preco: {
-        type: Number,
+        type: String,
         required: true
     },
     categoria: {
@@ -35,6 +35,11 @@ const Produto = new Schema({
         required: true,
         default: "teste",
       },
+      validade: {
+        type: String,
+        required: false,
+        default: "Validade Indefinida",
+      }
 });
 
 mongooose.model('produtos', Produto);
