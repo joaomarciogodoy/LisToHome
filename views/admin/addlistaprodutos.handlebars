@@ -23,7 +23,7 @@
 </label>
 <img src="/images/filter.png" id="img-filter" alt="">
 
-<form action="/admin/filter" method="get">
+<form action="/admin/filter" method="post">
     <select class="form-select " name="categoriafilter">
         <option value="0">Todos</option>
         {{#each categorias}}
@@ -53,9 +53,9 @@
             <div class="card-body">
                 <input type="text" hidden name="id" value="{{_id}}">
                 <input type="text" name="nome" class="nome-produto" value="{{nome}}">
-                <input type="text" name="validade" class="nome-produto" value="{{validade}}">
+                <input type="text" hidden name="validade" class="nome-produto" value="{{validade}}">
                 <input type="text" hidden name="lista" class="nome-lista" value="{{../nomelista}}">
-                <input type="text" hidden name="preco" value="{{preco}}">
+                <input type="text"  name="preco" value="{{preco}}">
                 <input type="text" hidden name="categoria" value="{{categoria.nome}}">
                 <br>
                 <br>
@@ -81,7 +81,10 @@
 
 </div>
 <br>
-<a href="/lista/{{nomelista}}" class="btn btn-primary">Ir para a lista {{nomelista}}</a>
+<a href="/lista/{{nomelista}}" class="btn btn-primary">Ir para a lista</a>
+
+
+
 
 
 <div class="modal " id="modalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

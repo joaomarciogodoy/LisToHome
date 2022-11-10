@@ -613,12 +613,16 @@ router.get('/categoria/edit/:id', (req, res) => {
         );
 
         //filtrar produtos por categoria
-        router.get('/filter', (req, res) => {
+        router.post('/filter', (req, res) => {
+           
+           
+           
             Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
-                const categoria = req.query.categoriafilter;
+                const categoria = req.body.categoriafilter;
                if(categoria == 0){
+               
                 Produto.find({id_user: req.user._id}).lean().then((produtos) => {
-                    res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias });
+                    res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias});
                 }
                 ).catch((err) => {
                     req.flash('error_msg', 'Houve um erro ao listar os produtos');
@@ -627,8 +631,9 @@ router.get('/categoria/edit/:id', (req, res) => {
                 );
 
                } else {
+
                 Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
-                    res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos });
+                    res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos});
                 }
                 ).catch((err) => {
                     req.flash('error_msg', 'Houve um erro ao listar os produtos.');

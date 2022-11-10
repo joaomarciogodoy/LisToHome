@@ -14,11 +14,65 @@
 
 <body>
  {{#if user}}
-TUTORIAL
 
-<a href="/usuarios/tutorial">Tutorial</a>
- 
+<h2>Dúvidas? Siga nosso tutorial.</h2>
 
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+       Cadastro de Listas.
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        <strong>Primeiramente, cadastre uma lista em nosso site.</strong>  Para isso, clique na guia "Listas", "Adicionar Lista" e digite o nome que escolheu, após isso clique em "Criar Lista".
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        Cadastro de Categorias.
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+        <strong>Segundo, cadastre uma categoria. </strong> Para isso, clique na guia "Categorias", "Adicionar Categoria" e digite o nome que escolheu, após isso clique em "Criar Categoria". 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        Cadastro de Produtos.
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+           <strong>Com as listas e categorias cadastradas, adicione os produtos que desejar.</strong>  Clique na guia "Produtos", "Adicionar Produto" e preencha os campos de acordo com o produto que irá cadastrar, nome, preço e categoria, após isso clique em "Criar Produto". 
+    
+      </div>
+    </div>
+  </div>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+       Adicionar produtos na Lista.
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+      <div class="accordion-body">
+           <strong>Depois de fazer os cadastros anteriores, clique na guia "Listas".</strong> Selecione a lista que deseja adicionar os produtos clicando no símbolo "+". Agora é só ir clicando nos produtos que quiser, eles serão adicionados diretamente na lista escolhida. 
+    
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
    {{else}}
    
    {{_changednavbar}}
