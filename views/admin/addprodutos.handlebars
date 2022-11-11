@@ -11,21 +11,22 @@
             <input type="number" min="0.5" step="any" id="preco" name="preco" placeholder="Digite o Preço do Produto"
                 class="form-control">
             <br>
-
-             <label for="validade">Validade:</label>
-            <input type="date"  id="validade" name="validade" placeholder="Selecione o vencimento do produto"
-                class="form-control">
-            <br>
-
-            <label for="categoria">Categoria:   (Se não achar a categoria desejada, <a href="#modalCategoria" data-bs-toggle="modal" data-bs-target="#modalCategoria">clique aqui</a> )</label>
+  <label for="categoria">Categoria:   (Se não achar a categoria desejada, <a href="#modalCategoria" data-bs-toggle="modal" data-bs-target="#modalCategoria">clique aqui</a> )</label>
             <select class="form-select form-select-sm" name="categoria" id="categoria">
                 <option value="0" selected class="testeoption">Selecione uma categoria</option>
                 {{#each categorias}}
                 <option value="{{_id}}" class="testeoption">{{nome}}</option>
                 {{/each}}
             </select>
+            <br>
+             <label for="validade">Validade:</label>
+            <input type="date"  id="validade" name="validade" placeholder="Selecione o vencimento do produto"
+                class="form-control">
+           
 
-            <button type="submit" class="btn btn-success mt-4">Criar Produto </button>
+          
+
+            <button type="submit" id="limpasession" class="btn btn-success mt-4">Criar Produto </button>
         </form>
     </div>
 
@@ -61,3 +62,49 @@
     </div>
   </div>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script>
+$(function (){
+
+if(sessionStorage.preco){
+  $('#preco').val(sessionStorage.preco)
+}
+  $('#preco').keyup(function(){
+    sessionStorage.preco = $(this).val()
+  })
+})
+
+$(function (){
+
+if(sessionStorage.nome){
+  $('#nome').val(sessionStorage.nome)
+}
+  $('#nome').keyup(function(){
+    sessionStorage.nome = $(this).val()
+  })
+})
+
+$(function (){
+
+  $('#limpasession').click(function(){
+   sessionStorage.preco = ""
+   sessionStorage.nome = ""
+
+   sessionStorage.removeItem('preco')
+   sessionStorage.removeItem('nome')
+  })
+})
+
+
+
+
+
+
+
+
+
+</script>

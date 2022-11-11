@@ -32,14 +32,18 @@ body::-webkit-scrollbar {
 }
 
 .card-view-lista{
-    width: 17rem;
-    height: 11rem;
+    width: 20rem;
+    height: 12rem;
 }
 
 .btn-grid{
     width:100px
 }
 
+.btn-produto{
+    width:100px;
+    margin-right: 40px;
+}
 
 
 .add-btn{
@@ -139,6 +143,20 @@ h4{
     border-radius:10px
 }
 
+.info-produto{
+    margin-top:-13px
+}
+
+.title-produto{
+    margin-bottom: 25px;
+}
+
+
+.input-pesquisa{
+    border-radius: 15px;
+    width: 300px;
+    outline: none;
+}
 
 
 @media print {

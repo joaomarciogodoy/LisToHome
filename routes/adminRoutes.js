@@ -102,18 +102,32 @@ router.post('/listas/edit', (req, res) => {
 }
 );
 
-router.post('/listas/delete', (req, res) => {
-    Lista.deleteOne({ _id: req.body.id }).lean().then(() => {
+
+router.get('/listas/delete/:id', (req, res) => {
+
+    Lista.deleteOne({ _id: req.params.id }).lean().then(() => {
         req.flash('success_msg', 'Lista removida com sucesso.');
         res.redirect('/admin/listas');
     }
     ).catch((err) => {
-        req.flash('error_msg', 'Houve um erro ao remover a lista.');
+        req.flash('error_msg', 'Houve um erro ao carregar a lista.');
         res.redirect('/admin/listas');
     }
     );
-}
-);
+})
+
+// router.post('/listas/delete', (req, res) => {
+//     Lista.deleteOne({ _id: req.body.id }).lean().then(() => {
+//         req.flash('success_msg', 'Lista removida com sucesso.');
+//         res.redirect('/admin/listas');
+//     }
+//     ).catch((err) => {
+//         req.flash('error_msg', 'Houve um erro ao remover a lista.');
+//         res.redirect('/admin/listas');
+//     }
+//     );
+// }
+// );
 
 
 
@@ -134,6 +148,9 @@ router.get('/produtos', (req, res) => {
 
 router.get('/produtos/add', (req, res) => {
     Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
+
+
+
     res.render('admin/addprodutos', { categorias: categorias });
 }
 ).catch((err) => {
@@ -260,10 +277,18 @@ router.get('/produtos/edit/:id', (req, res) => {
 
 
 router.post('/produtos/edit', (req, res) => {
+    var formatter = new Intl.DateTimeFormat('pt-BR', {
+        dateStyle: 'long',
+    });
+    if(req.body.validade != ""){
+       var validade = new Date(req.body.validade)
+        var validadeProduto = formatter.format(validade)
+    }
     Produto.findOne({ _id: req.body.id }).then((produto) => {
         produto.nome = req.body.nome;
         produto.categoria = req.body.categoria;
         produto.preco = req.body.preco;
+        produto.validade = validadeProduto
         produto.save()
             .then(() => {
                 req.flash('success_msg', 'Produto editado com sucesso.');
@@ -436,8 +461,9 @@ router.post('/listaprodutos/nova', (req, res) => {
         new ListaProduto(novoListaProduto).save()
 
             .then(() => {
-                let nomeflashmsg = novoListaProduto.lista
-                req.flash('success_msg', `Produto adicionado na lista ${nomeflashmsg}`);
+                let listaflash = novoListaProduto.lista
+                let produtoflash = novoListaProduto.nome
+                req.flash('success_msg', `${produtoflash} adicionado na lista ${listaflash}`);
                 res.redirect(`back`)
             }
             ).catch((erro) => {
@@ -454,7 +480,10 @@ router.post('/listaprodutos/nova', (req, res) => {
 router.get('/listaprodutos/edit/:id', (req, res) => {
 
     ListaProduto.findOne({ _id: req.params.id }).lean().then((listaproduto) => {
-                res.render('admin/editlistaprodutos', { listaproduto: listaproduto,});
+        Categoria.find({id_user: req.user._id}).lean().then((categoria)=>{
+            res.render('admin/editlistaprodutos', { listaproduto: listaproduto, categoria:categoria});
+           })
+              
 
             }).catch((err) => {
                 req.flash('error_msg', 'Houve um erro ao listar os produtos');
@@ -618,18 +647,34 @@ router.get('/categoria/edit/:id', (req, res) => {
         );
 
 
-        router.post('/categoria/delete', (req, res) => {
-            Categoria.deleteOne({ _id: req.body.id }).lean().then(() => {
-                req.flash('success_msg', 'Lista removida com sucesso.');
+        router.get('/categoria/delete/:id', (req, res) => {
+
+            Categoria.deleteOne({ _id: req.params.id }).lean().then(() => {
+                req.flash('success_msg', 'Categoria removida com sucesso.');
                 res.redirect('/admin/categorias');
+        
             }
             ).catch((err) => {
-                req.flash('error_msg', 'Houve um erro ao remover a lista.');
-                res.redirect('/admin/categorias');
+                req.flash('error_msg', 'Houve um erro ao carregar a categoria.');
+                console.log(err);
             }
             );
         }
         );
+     
+     
+        // router.post('/categoria/delete', (req, res) => {
+        //     Categoria.deleteOne({ _id: req.body.id }).lean().then(() => {
+        //         req.flash('success_msg', 'Lista removida com sucesso.');
+        //         res.redirect('/admin/categorias');
+        //     }
+        //     ).catch((err) => {
+        //         req.flash('error_msg', 'Houve um erro ao remover a lista.');
+        //         res.redirect('/admin/categorias');
+        //     }
+        //     );
+        // }
+        // );
 
      
 

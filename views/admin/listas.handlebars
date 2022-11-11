@@ -19,12 +19,12 @@
 
             <div class="container-lista"> <a href="/admin/listas/edit/{{_id}}"><button
                         class="btn btn-warning mt-2 btn-grid">Editar</button></a>
-                <button form="form-delete" type="submit" class="btn btn-danger mt-2 btn-grid">Deletar</button>
+               
+               <a href="/admin/listas/delete/{{_id}}"><button onclick="return confirm('Tem certeza que deseja excluir a lista?')"
+                        class="btn btn-danger mt-2 btn-grid">Deletar</button></a>
             </div>
 
-            <form id="form-delete" action="/admin/listas/delete" method="post">
-                <input type="hidden" name="id" value="{{_id}}">
-            </form>
+           
 
         </div>
     </div>

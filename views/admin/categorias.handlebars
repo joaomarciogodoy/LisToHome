@@ -15,7 +15,7 @@
 
 
 
-<div class="container-grid">
+<div class="container-grid container-grid-cell">
     {{#each categorias}}
 
     <div class="card card-view-lista" id="card-produto">
@@ -24,14 +24,12 @@
             <p class="data-lista">Data de Criação: {{date}}</p>
             <br>
 
-            <div class="container-lista"> <a href="/admin/categoria/edit/{{_id}}">
-            <button class="btn btn-warning mt-2 btn-grid">Editar</button></a>
-                <button form="form-delete" type="submit" class="btn btn-danger mt-2 btn-grid">Deletar</button>
-            </div>
+            <div class="container-lista">
+                 <a href="/admin/categoria/edit/{{_id}}"><button class="btn btn-warning mt-2 btn-grid">Editar</button></a>
+                 <a href="/admin/categoria/delete/{{_id}}"><button onclick="return confirm('Tem certeza que deseja excluir a categoria?')" class="btn btn-danger mt-2 btn-grid">Deletar</button></a>
+                 </div>
 
-            <form id="form-delete" action="/admin/categoria/delete" method="post">
-                <input type="hidden" name="id" value="{{_id}}">
-            </form>
+          
 
         </div>
     </div>

@@ -12,7 +12,7 @@
 </label>
 
 <form action="/usuarios/pesquisar/{{nome_lista}}" method="get">
-      <input type="text" name="pesquisa" class="nome-produto">
+      <input type="text" name="pesquisa" class="input-pesquisa">
 
     <button class="btn btn-success">Pesquisar</button>
 
@@ -30,8 +30,8 @@
 
             <h5 class="card-title">{{nome}}</h5>
             <input class="card-title" hidden name="verificadorId" value="{{_id}}" type="text">
-            <input class="card-title"  name="nome_lista" value="{{../nome_lista}}" type="text">
-           <button type="submit" class="btn btn-success btn-share"><i class="fa-solid fa-share"></i></button>
+            <input class="card-title" hidden name="nome_lista" value="{{../nome_lista}}" type="text">
+           <button type="submit" class="btn btn-success btn-share" onclick="return confirm('Tem certeza que deseja compartilhar com este usuário?')"><i class="fa-solid fa-share"></i></button>
 
 
 {{!-- TESTAR COM INPUT --}}

@@ -135,17 +135,14 @@ router.get('/logout', (req, res, next) => {
 
 
 router.get('/compartilhar/:nomelistafiltro', (req, res) => {
-    Usuario.find({ _id: {$ne: req.user._id} }).limit(3).lean().then((usuarios) => {
+   
        
         const nomeDaLista = req.params.nomelistafiltro;
-        res.render('usuarios/compartilhar', {usuarios:usuarios, nome_lista:nomeDaLista});
+        res.render('usuarios/compartilhar', {nome_lista:nomeDaLista});
     })
   
-}
-);
-
 router.get('/pesquisar/:nomelistafiltro', (req, res) => {
-    Usuario.find({ nome:  { $regex: '.*' + req.query.pesquisa + '.*' }, _id: {$ne: req.user._id} }).limit(3).lean().then((usuarios) => {
+    Usuario.find({ nome:  { $regex: '.*(?i)' + req.query.pesquisa + '.*' }, _id: {$ne: req.user._id} }).limit(3).lean().then((usuarios) => {
         const nomeDaLista = req.params.nomelistafiltro;
         res.render('usuarios/compartilhar', {usuarios:usuarios,nome_lista:nomeDaLista});
     })
@@ -161,7 +158,7 @@ router.get('/pesquisar/:nomelistafiltro', (req, res) => {
 router.post('/compartilhar/salvar', (req, res) => {
     Usuario.findOneAndUpdate({_id: req.body.verificadorId},{ $addToSet: {compartilhadas:req.body.nome_lista}}).lean().then(() => {
         req.flash('success_msg', 'Lista compartilhada com sucesso');
-        res.redirect('/homelist')
+        res.redirect('back')
     })
   
 }

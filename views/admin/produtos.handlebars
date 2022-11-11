@@ -8,17 +8,21 @@
     <hr>
 
 
-    <div class="container-grid">
+    <div class="container-grid container-grid-cell">
         {{#each produtos}}
-        <div class="card card-view-lista" id="card-produto">
+        <div class="card card-view-lista card-view-cell" id="card-produto">
             <div class="card-body">
-                <h5 class="card-text">{{nome}}</h5>
-                <p class="card-text"> <b>Preço:</b> {{preco}}</p>
-                <p class="card-text"><b>Categoria:</b> {{categoria.nome}}</p>
-                  <p class="card-text"><b>Validade:</b> {{validade}}</p>
-                <a href="/admin/produtos/edit/{{_id}}" class="btn btn-warning">Editar</a>
-                <a href="/admin/produtos/delete/{{_id}}" class="btn btn-danger">Deletar</a>
-            </div>
+                <h5 class="card-text title-produto"><b>{{nome}}</b></h5>
+             
+                <p class="card-text info-produto"> <b>Preço:</b> {{preco}}</p>
+                <p class="card-text info-produto"><b>Categoria:</b> {{categoria.nome}}</p>
+                  <p class="card-text info-produto"><b>Validade:</b> {{validade}}</p>
+              <div class="container-lista">
+                  <a href="/admin/produtos/edit/{{_id}}" ><button class="btn btn-warning btn-grid">Editar</button></a>
+                <a href="/admin/produtos/delete/{{_id}}"><button onclick="return confirm('Tem certeza que deseja excluir o produto?')"class="btn btn-danger btn-grid">Deletar</button></a>
+           
+              </div> 
+              </div>
 
 
         </div>

@@ -48,14 +48,14 @@
 
     <form action="/admin/listaprodutos/nova" method="post">
 
-        <div class="card" id="card-produto" style="width: 18rem;">
+        <div class="card card-view-add" id="card-produto" style="width: 18rem;">
             {{!-- <img src='../../images/{{img}}' class="card-img-top" alt="..."> --}}
             <div class="card-body">
                 <input type="text" hidden name="id" value="{{_id}}">
-                <input type="text" name="nome" class="nome-produto" value="{{nome}}">
+                <input type="text" readonly name="nome" class="nome-produto" value="{{nome}}">
                 <input type="text" hidden name="validade" class="nome-produto" value="{{validade}}">
-                <input type="text"name="lista" class="nome-lista" value="{{../nomelista}}">
-                <input type="text"  name="preco" value="{{preco}}">
+                <input type="text" hidden name="lista" class="nome-lista" value="{{../nomelista}}">
+                <input type="text" readonly name="preco" class="nome-produto" value="{{preco}}">
                 <input type="text" hidden name="categoria" value="{{categoria.nome}}">
                 <br>
                 <br>
@@ -105,6 +105,11 @@
             <input type="number" min="0.5" step="any" id="preco" name="preco" placeholder="Digite o Preço do Produto"
                 class="form-control">
             <br>
+
+            <label for="validade">Validade:</label>
+            <input type="date"  id="validade" name="validade" placeholder="Selecione o vencimento do produto"
+                class="form-control">
+                <br>
 
             <label for="categoria">Categoria:</label>
             <select class="form-select form-select-sm" name="categoria" id="categoria">

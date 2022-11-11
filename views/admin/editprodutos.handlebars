@@ -15,9 +15,15 @@
             <br>
 
             <label for="preco">Preço:</label>
-            <input type="number" value="{{produto.preco}}" min="0.5" step="any" id="preco" name="preco"
+            <input type="text" value="{{produto.preco}}" min="0.5" step="any" id="preco" name="preco"
                 placeholder="Preço do Produto" class="form-control">
             <br>
+
+            <label for="validade">Validade:</label>
+            <input type="date"  id="validade" name="validade" placeholder="Selecione o vencimento do produto"
+                class="form-control">
+
+                <br>
 
              <label for="categoria">Categoria:   (Se não achar a categoria desejada, <a href="#modalCategoria" data-bs-toggle="modal" data-bs-target="#modalCategoria">clique aqui</a> )</label>
             <select class="form-select form-select-sm" name="categoria" id="categoria">

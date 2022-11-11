@@ -10,14 +10,16 @@
 
 <div class="container">
     <h2>Lista: {{lista.nome}}</h2>
-  <a href="/admin/listaprodutos/add/{{lista.nome}}" class="btn btn-success no-print">Adicionar Produto</a>
+  <a href="/admin/listaprodutos/add/{{lista.nome}}" class="btn btn-success no-print btn-cell">Adicionar Produto</a>
+ 
   <a href="/usuarios/compartilhar/{{lista.nome}}" class="btn btn-success no-print">Compartilhar Lista</a>
 <br>
 
 
 <br>
   
-
+<div class="table-responsive">
+    
 <table class="table table-bordered" id="tabela-produtos">
     <thead>
         <tr>
@@ -38,8 +40,8 @@
             <td>{{categoria}}</td>
             <td>{{validade}}</td>
            <td class="no-print"><input type="text" hidden="true" name="listaprodutoid" value="{{_id}}">
-           <a href="/admin/listaprodutos/edit/{{_id}}" class="btn btn-warning">Editar</a>
-           
+           <a href="/admin/listaprodutos/edit/{{_id}}" class="btn btn-warning btn-cell">Editar</a>
+        
            <a href="/admin/listaprodutos/delete/{{_id}}" class="btn btn-danger">Deletar</a>
            
            </td>
@@ -49,6 +51,7 @@
     </tbody>
 </table>
 
+</div>
 <h3></h3>
 
 <button onclick="myFunction()" class="btn btn-primary" id="printPageButton">Imprimir</button>
