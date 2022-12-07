@@ -12,7 +12,7 @@ const Categoria = mongoose.model('categorias');
 const {isAdmin} = require('../helpers/isAdmin');
 
 
-router.get('/listas', (req, res) => {
+router.get('/listas', isAdmin ,(req, res) => {
     Lista.find({ id_user: req.user._id }).lean().sort({ date: 'desc' }).then((listas) => {
         res.render('admin/listas', { listas: listas });
     }
@@ -372,33 +372,74 @@ router.get('/listaprodutos/add/:nomelista', (req, res) => {
 );
 
    //filtrar produtos por categoria
-   router.get('/filter/:nomelista', (req, res) => {
+//    router.get('/filter/:nomelista', (req, res) => {
+           
+//     let nomelista = req.params.nomelista
+           
+//     Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
+//         const categoria = req.query.categoriafilter;
+//        if(categoria == 0){
+       
+//         Produto.find({id_user: req.user._id}).lean().then((produtos) => {
+//             res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias,nomelista:nomelista});
+//         }
+//         ).catch((err) => {
+//             req.flash('error_msg', 'Houve um erro ao listar os produtos');
+//             console.log(err);
+//         }
+//         );
+
+//        } else {
+
+//         Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
+//             res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos,nomelista:nomelista});
+//         }
+//         ).catch((err) => {
+//             req.flash('error_msg', 'Houve um erro ao listar os produtos.');
+//             console.log(err);
+//         }
+//         );
+//        }
+
+//     }
+//     ).catch((err) => {
+//         req.flash('error_msg', 'Houve um erro ao listar as categorias');
+//         console.log(err);
+//     }
+//     );
+// }
+// );
+
+
+ router.get('/filter/:nomelista', (req, res) => {
            
     let nomelista = req.params.nomelista
            
     Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
         const categoria = req.query.categoriafilter;
-       if(categoria == 0){
+       if(categoria != 0){
        
-        Produto.find({id_user: req.user._id}).lean().then((produtos) => {
-            res.render('admin/addlistaprodutos', { produtos: produtos, categorias: categorias,nomelista:nomelista});
-        }
+        Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
+             res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos,nomelista:nomelista});
+                 }
         ).catch((err) => {
             req.flash('error_msg', 'Houve um erro ao listar os produtos');
             console.log(err);
         }
         );
 
-       } else {
+       } else{
 
-        Produto.find({categoria:categoria,id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
-            res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos,nomelista:nomelista});
-        }
-        ).catch((err) => {
-            req.flash('error_msg', 'Houve um erro ao listar os produtos.');
-            console.log(err);
-        }
-        );
+        Categoria.find({id_user: req.user._id}).lean().then((categorias) => {
+            Produto.find({id_user: req.user._id}).lean().populate('categoria').then((produtos) => {
+                res.render('admin/addlistaprodutos', { categorias: categorias, produtos: produtos,nomelista:nomelista});
+                    }
+           ).catch((err) => {
+               req.flash('error_msg', 'Houve um erro ao listar os produtos');
+               console.log(err);
+           }
+           ); 
+        })
        }
 
     }

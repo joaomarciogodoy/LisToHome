@@ -11,6 +11,10 @@ require('./models/Lista');
 const Lista = mongoose.model('listas');
 require('./models/Usuario');
 const Usuario = mongoose.model('usuarios');
+require('./models/Categoria');
+const Categoria = mongoose.model('categorias');
+require('./models/Produto');
+const Produto = mongoose.model('produtos');
 require('./models/ListaProduto');
 const ListaProduto = mongoose.model('listaprodutos');
 const usuarios = require('./routes/User');
@@ -57,11 +61,11 @@ app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //Mongoose
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://joaomarcio:*Aa40028922@cluster0.mu0yood.mongodb.net/test').then(() => {
+mongoose.Promise = global.Promise; 
+mongoose.connect('mongodb://127.0.0.1/LisToHome').then(() => {
     console.log('Conectado ao MongoDB');
 }
-//mongodb://127.0.0.1/LisToHome
+//mongodb+srv://joaomarcio:*Aa40028922@cluster0.mu0yood.mongodb.net/test
 ).catch((err) => {
     console.log('Erro ao conectar ao MongoDB: ' + err);
 }
@@ -128,6 +132,30 @@ app.get('/lista/:id', (req, res) => {
         console.log(err);
     }
     );
+}
+);
+
+app.get('/apresentacao', async (req, res) => {
+    try {
+        const db = mongoose.connection.db;
+    
+        // Get all collections
+        const collections = await db.listCollections().toArray();
+    
+        // Create an array of collection names and drop each collection
+        collections
+          .map((collection) => collection.name)
+          .forEach(async (collectionName) => {
+            db.dropCollection(collectionName);
+          });
+    
+
+
+        res.redirect('/');
+      } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+      }
 }
 );
 
